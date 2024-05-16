@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# this program prints "Best School"
+
+count = 0
+
+until [ $count -le 10 ]
+do
+	echo "Best School"
+	((count++))
+done
