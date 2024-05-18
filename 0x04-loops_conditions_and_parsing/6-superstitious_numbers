@@ -2,9 +2,9 @@
 # this script prints from 1-20
 # with some exceptions
 
-count=0
+count=1
 
-while [[ "$count" -le 19 ]]; do
+while [[ "$count" -le 20 ]]; do
 	case $count in
 		4)
 			echo "$count"
