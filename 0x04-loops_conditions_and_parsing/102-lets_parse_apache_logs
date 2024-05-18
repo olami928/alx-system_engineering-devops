@@ -5,4 +5,4 @@
 LOG_FILE="apache-access.log"
 
 # Use awk to parse and extract the IP and HTTP status code
-awk '{print $1, $8}' "$LOG_FILE"
+awk '{print $1, $9}' "$LOG_FILE"
