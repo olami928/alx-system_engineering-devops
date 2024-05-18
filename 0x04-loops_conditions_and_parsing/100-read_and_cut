@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script extracts and displays username, user ID, and home directory from /etc/passwd
+
+# Read each line of /etc/passwd
+while IFS=: read -r username password uid gid gecos home shell; do
+    echo "$username:$uid:$home"
+done < /etc/passwd

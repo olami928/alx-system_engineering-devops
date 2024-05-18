@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# This script displays basic info about the /etc/passwd file
+
+while IFS=: read -r username password uid gid gecos home shell; do
+    echo "The user $username is part of the $gid gang, lives in $home and rides $shell. $username's ID is $uid and is protected by the passcode $password, more info about the user here: $gecos"
+done < /etc/passwd
