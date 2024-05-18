@@ -4,9 +4,9 @@
 count=0
 
 # Use a while loop to iterate 10 times
-while [ "$count" -lt 10 ]; do
+while [ "$count" -lt 11 ]; do
     # Check if it's the 9th iteration
-    if [ "$count" -eq 8 ]; then
+    if [ "$count" -eq 9 ]; then
         echo "Hi"  # Display "Hi" on the 9th iteration
     else
         echo "Best School"  # Display "Best School" for other iterations

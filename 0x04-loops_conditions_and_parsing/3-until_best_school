@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # This program prints "Best School"
 
-count=0  # Corrected assignment format
+count=1  # Corrected assignment format
 
 until [ "$count" -gt 10 ]  # Corrected condition
 do
