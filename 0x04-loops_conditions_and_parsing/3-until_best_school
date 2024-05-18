@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# this program prints "Best School"
+# This program prints "Best School"
 
-count = 0
+count=0  # Corrected assignment format
 
-until [ $count -le 10 ]
+until [ "$count" -gt 10 ]  # Corrected condition
 do
-	echo "Best School"
-	((count++))
+        echo "Best School"
+        ((count++))
 done
