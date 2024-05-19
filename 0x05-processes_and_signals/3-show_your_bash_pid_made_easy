@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# this program prints the PID of a process without ps
+
+pgrep -l bash

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# this program prints a string and sleep for 10s
+
+while true; do
+	echo "To infinity and beyond"
+	sleep 2s
+done
