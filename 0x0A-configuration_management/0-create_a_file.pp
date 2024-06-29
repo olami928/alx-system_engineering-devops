@@ -1,5 +1,5 @@
-file { '/tmp/school':
-  ensure  => 'file',
+file { 'dimeji@DIMEJI':
+  path    => '/tmp/school',
   content => 'I love Puppet',
   mode    => '0744',
   owner   => 'www-data',
