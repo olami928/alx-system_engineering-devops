@@ -2,9 +2,7 @@
 # this is a bash script install nginx on a server
 
 sudo apt-get update
-sudo apt-get -y install nginx
-sudo ufw 'Nginx HTTP'
-
-echo "Hello World" | sudo tee /var/www/html/index.html
-sudo nginx -t
-sudo service nginx restart
+sudo apt-get install -y nginx
+sudo chown -R ubuntu /var/www
+echo "Hello World" > /var/www/html/index.nginx-debian.html
+sudo service nginx start
