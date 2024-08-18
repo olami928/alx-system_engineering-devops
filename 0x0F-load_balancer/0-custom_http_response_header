@@ -1,18 +1,24 @@
 #!/usr/bin/env bash
-# configuring web-01 
+# 404 Not Found Page
+# returns a custom header on request
 
-sudo apt-get update
-sudo apt-get install -y nginx
+apt-get update
+apt-get install -y nginx
+sudo apt-get -y update
+sudo apt-get -y install nginx
 
+touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+printf %s "server {
+    listen 80;
+    listen [::]:80 default_server;
+    add_header X-Served-By $HOSTNAME;
+    root   /var/www/html/;
+    index  index.html index.htm;
+sudo sed -i "6i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
 echo "Hello World!" | sudo tee /var/www/html/index.html
-
-new_string="server_name -;\n\trewrite ^\/redirect_me https://github.com\/olami928 permanent;"
-
-sudo sed -i "s/server-name;/$new_string/" /etc/nginx/sites-enabled/default
-
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404.html
+}" > /etc/nginx/sites-available/default
 
-sudo sed -i "server_name -;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
-
-sudo nginx -t
-sudo service nginx restart
+service nginx restart
+sudo service nginx start
