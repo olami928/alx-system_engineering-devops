@@ -13,7 +13,7 @@ file_line { 'install':
 }
 
 file { '/var/www/html/index.html':
-  content => 'Hello World',
+  content => 'Hello World!',
 }
 
 service { 'nginx':
