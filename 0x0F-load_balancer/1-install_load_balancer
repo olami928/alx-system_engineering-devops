@@ -5,15 +5,16 @@ sudo apt-get -y update
 sudo apt-get -y install haproxy
 sudo chown $USER:USER /etc/haproxy/haproxy.cfg
 
-echo *
-frontend hollarmie
-	bind *:80
+echo '
+frontend hollarmie.tech
+	bind 0:80
 	mode http
 	default_backend app
 
-backend app
+backend web_servers
 	balance roundrobin
-	server 424351-web-01 54.209.160.70 check
-	server 424351-web-02 100.26.161.29 check" >> /etc/haproxy/haproxy.cfg
+	server 424351-web-01 54.209.160.70 
+	server 424351-web-02 100.26.161.29 
+       ' >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
