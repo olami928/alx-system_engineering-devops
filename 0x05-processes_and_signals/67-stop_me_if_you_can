@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # this script kills a process without using kill or killall
 
-pkill -f 7-highlander
+pkill SIGTERM -f 7-highlander
