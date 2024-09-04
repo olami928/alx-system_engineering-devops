@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
-# install load balancer
+# configures a new HAproxy as a load balancer
 
+# Install HAproxy on a server
 sudo apt-get -y update
 sudo apt-get -y install haproxy
-sudo chown $USER:USER /etc/haproxy/haproxy.cfg
 
-echo '
+# Configure haproxy configuration file to distribute requests using a roundrobin algorithm
+sudo bash -c "echo '
 frontend hollarmie.tech
-	bind 0:80
-	mode http
-	default_backend app
+        bind 0:80
+        default_backend web_servers
 
 backend web_servers
-	balance roundrobin
-	server 424351-web-01 54.209.160.70 check
-	server 424351-web-02 100.26.161.29 check
-       ' >> /etc/haproxy/haproxy.cfg
+        balance roundrobin
+        server 424351-web-01 54.209.160.70
+        server 424351-web-02 100.26.161.29
+' >> /etc/haproxy/haproxy.cfg"
 
+# Restart HAproxy service
 sudo service haproxy restart
