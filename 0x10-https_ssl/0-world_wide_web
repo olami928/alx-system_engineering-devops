@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# This script configures an IP of a website creating a load balancer
+
+
+dig_info() {
+	line=$(dig "$2"."$1" +short)
+
+	if [ -n "$line" ]; then
+		record_type=$(dig "$2"."$1" | grep -A1 "ANSWER SECTION:" | awk 'NR==2 {print $4}')
+		echo "The subdoamin $2 is a $record_type records and points to $line"
+	else
+		echo "The subdomain $2 has no DNS record."
+	fi
+}
+
+if [ "$#" -eq 1 ]; then
+	dig_info "$1" "www"
+	dig_info "$1" "lb-01"
+	dig_info "$1" "web-01"
+	dig_info "$1" "web-02"
+elif [ "$#" -eq 2 ]; then
+	dig_info "$1" "$2"
+fi
