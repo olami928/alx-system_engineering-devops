@@ -13,8 +13,8 @@ frontend hollarmie.tech
 
 backend web_servers
 	balance roundrobin
-	server 424351-web-01 54.209.160.70 
-	server 424351-web-02 100.26.161.29 
+	server 424351-web-01 54.209.160.70 check
+	server 424351-web-02 100.26.161.29 check
        ' >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
